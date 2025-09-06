@@ -1,0 +1,148 @@
+@import "tailwindcss";
+
+body {
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+@layer base {
+  :root {
+    /* Brand Colors - VIVI Studio Theme */
+    --brand-primary: 139 154 122; /* #8B9A7A - Main Olive Green */
+    --brand-primary-light: 164 179 150; /* #A4B396 - Light Olive */
+    --brand-primary-dark: 107 122 90; /* #6B7A5A - Dark Olive */
+    --brand-secondary: 245 247 242; /* #F5F7F2 - Ivory/Cream */
+    --brand-accent: 212 224 200; /* #D4E0C8 - Light Sage */
+    
+    /* Updated shadcn colors with brand theme */
+    --background: 245 247 242; /* Brand Secondary */
+    --foreground: 20 20 20; /* Dark text for readability */
+    --card: 0 0% 100%;
+    --card-foreground: 20 20 20;
+    --popover: 0 0% 100%;
+    --popover-foreground: 20 20 20;
+    --primary: 139 154 122; /* Brand Primary */
+    --primary-foreground: 255 255 255; /* White text on brand colors */
+    --secondary: 212 224 200; /* Brand Accent */
+    --secondary-foreground: 20 20 20; /* Dark text on light backgrounds */
+    --muted: 212 224 200;
+    --muted-foreground: 60 60 60; /* Muted dark text */
+    --accent: 212 224 200;
+    --accent-foreground: 20 20 20;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 212 224 200;
+    --input: 212 224 200;
+    --ring: 139 154 122;
+    --radius: 0.5rem;
+    --chart-1: 139 154 122;
+    --chart-2: 164 179 150;
+    --chart-3: 107 122 90;
+    --chart-4: 212 224 200;
+    --chart-5: 245 247 242;
+  }
+
+  .dark {
+    /* Dark mode with brand colors */
+    --background: 107 122 90; /* Brand Primary Dark */
+    --foreground: 255 255 255; /* White text for dark mode */
+    --card: 107 122 90;
+    --card-foreground: 255 255 255;
+    --popover: 107 122 90;
+    --popover-foreground: 255 255 255;
+    --primary: 164 179 150; /* Brand Primary Light */
+    --primary-foreground: 20 20 20; /* Dark text on light brand colors */
+    --secondary: 139 154 122; /* Brand Primary */
+    --secondary-foreground: 255 255 255;
+    --muted: 139 154 122;
+    --muted-foreground: 220 220 220; /* Light muted text */
+    --accent: 139 154 122;
+    --accent-foreground: 255 255 255;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 139 154 122;
+    --input: 139 154 122;
+    --ring: 164 179 150;
+    --chart-1: 164 179 150;
+    --chart-2: 139 154 122;
+    --chart-3: 212 224 200;
+    --chart-4: 245 247 242;
+    --chart-5: 107 122 90;
+  }
+}
+
+@layer base {
+  * {
+    border-color: hsl(var(--border));
+  }
+  body {
+    background-color: hsl(var(--background));
+    color: hsl(var(--foreground));
+  }
+}
+
+/* Custom Brand Colors - Explicit CSS Classes */
+@layer utilities {
+  /* Sage Colors */
+  .bg-sage-50 { background-color: #f5f7f2; }
+  .bg-sage-100 { background-color: #e8ede0; }
+  .bg-sage-200 { background-color: #d4e0c8; }
+  .bg-sage-300 { background-color: #a4b396; }
+  .bg-sage-400 { background-color: #8b9a7a; }
+  .bg-sage-500 { background-color: #6b7a5a; }
+  .bg-sage-600 { background-color: #556147; }
+  .bg-sage-700 { background-color: #444d3a; }
+  .bg-sage-800 { background-color: #383f30; }
+  .bg-sage-900 { background-color: #2f3529; }
+  
+  /* Olive Colors */
+  .bg-olive-50 { background-color: #f5f7f2; }
+  .bg-olive-100 { background-color: #e8ede0; }
+  .bg-olive-200 { background-color: #d4e0c8; }
+  .bg-olive-300 { background-color: #a4b396; }
+  .bg-olive-400 { background-color: #8b9a7a; }
+  .bg-olive-500 { background-color: #6b7a5a; }
+  .bg-olive-600 { background-color: #556147; }
+  .bg-olive-700 { background-color: #444d3a; }
+  .bg-olive-800 { background-color: #383f30; }
+  .bg-olive-900 { background-color: #2f3529; }
+  
+  /* Text Colors */
+  .text-sage-100 { color: #e8ede0; }
+  .text-sage-200 { color: #d4e0c8; }
+  .text-sage-300 { color: #a4b396; }
+  .text-sage-400 { color: #8b9a7a; }
+  .text-sage-600 { color: #556147; }
+  .text-sage-700 { color: #444d3a; }
+  .text-olive-600 { color: #556147; }
+  .text-olive-700 { color: #444d3a; }
+  
+  /* Gradient From Colors */
+  .from-sage-50 { --tw-gradient-from: #f5f7f2; --tw-gradient-to: rgb(245 247 242 / 0); --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to); }
+  .from-sage-500 { --tw-gradient-from: #6b7a5a; --tw-gradient-to: rgb(107 122 90 / 0); --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to); }
+  .from-olive-500 { --tw-gradient-from: #6b7a5a; --tw-gradient-to: rgb(107 122 90 / 0); --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to); }
+  
+  /* Gradient To Colors */
+  .to-sage-100 { --tw-gradient-to: #e8ede0; }
+  .to-sage-700 { --tw-gradient-to: #444d3a; }
+  .to-olive-700 { --tw-gradient-to: #444d3a; }
+  
+  /* Border Colors */
+  .border-sage-600 { border-color: #556147; }
+  
+  /* Fill Colors */
+  .fill-sage-200 { fill: #d4e0c8; }
+  .fill-sage-600 { fill: #556147; }
+  .fill-sage-700 { fill: #444d3a; }
+  .fill-white { fill: #ffffff; }
+  
+  /* Hover States */
+  .hover\:bg-sage-600:hover { background-color: #556147; }
+  .hover\:bg-olive-600:hover { background-color: #556147; }
+  .group-hover\:bg-sage-600:is(.group:hover *) { background-color: #556147; }
+  .group-hover\:bg-olive-600:is(.group:hover *) { background-color: #556147; }
+  .hover\:text-white:hover { color: #ffffff; }
+  .group-hover\:text-white:is(.group:hover *) { color: #ffffff; }
+  .group-hover\:fill-white:is(.group:hover *) { fill: #ffffff; }
+  .group-hover\:fill-sage-600:is(.group:hover *) { fill: #556147; }
+  .group-hover\:scale-105:is(.group:hover *) { transform: scale(1.05); }
+}

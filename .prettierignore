@@ -1,0 +1,32 @@
+# Dependencies
+node_modules/
+
+# Production builds
+dist/
+build/
+
+# Generated files
+*.min.js
+*.min.css
+*.min.mjs
+
+# Lock files
+package-lock.json
+pnpm-lock.yaml
+yarn.lock
+bun.lockb
+
+# Logs
+*.log
+
+# IDE
+.vscode/
+.idea/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Temporary files
+*.tmp
+*.temp

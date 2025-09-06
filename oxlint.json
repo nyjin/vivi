@@ -1,0 +1,246 @@
+{
+    "$schema": "https://oxc.rs/schema/oxlintrc.schema.json",
+    "plugins": [
+        "typescript",
+        "import",
+        "unicorn"
+    ],
+    "env": {
+        "node": true,
+        "jest": true
+    },
+    "ignorePatterns": [
+        "*.js"
+    ],
+    "lintOptions": {
+        "noUnusedLocals": "off",
+        "noUnusedParameters": "off",
+        "exactOptionalPropertyTypes": false,
+        "strict": false
+    },
+    "rules": {
+        /*
+         * TypeScript 스타일 및 일관성 규칙
+         * 코드 스타일과 일관성을 위한 기본 규칙들
+         * 
+         * 주의: 일부 규칙은 deprecated되었거나 oxlint에서 지원하지 않을 수 있습니다.
+         * 최신 정보는 https://oxc.rs/docs/guide/usage/linter 참조
+         */
+        // 인터페이스 이름 접두사 강제 안함 (I접두사 등)
+        // DEPRECATED: 이 규칙은 더 이상 사용되지 않습니다
+        // https://typescript-eslint.io/blog/deprecating-formatting-rules/
+        // Oxlint는 이 규칙을 지원하지 않을 수 있음
+        "typescript/interface-name-prefix": "off",
+        // 함수 반환 타입 명시 강제 안함
+        // https://typescript-eslint.io/rules/explicit-function-return-type
+        "typescript/explicit-function-return-type": "off",
+        // 모듈 경계 타입 명시 강제 안함
+        // https://typescript-eslint.io/rules/explicit-module-boundary-types
+        "typescript/explicit-module-boundary-types": "off",
+        // 멤버 구분자 스타일 강제 안함
+        // DEPRECATED: ESLint Stylistic으로 이동됨
+        // https://eslint.style/rules/ts/member-delimiter-style
+        // Oxlint는 이 규칙을 지원하지 않을 수 있음
+        "typescript/member-delimiter-style": "off",
+        /*
+         * TypeScript 안전성 관련 규칙 (완화됨)
+         * 타입 안전성 관련이지만 실무상 완화된 설정
+         */
+        // 안전하지 않은 할당 허용
+        // https://typescript-eslint.io/rules/no-unsafe-assignment
+        "typescript/no-unsafe-assignment": "off",
+        // 안전하지 않은 멤버 접근 허용
+        // https://typescript-eslint.io/rules/no-unsafe-member-access
+        "typescript/no-unsafe-member-access": "off",
+        // 안전하지 않은 함수 호출 허용
+        // https://typescript-eslint.io/rules/no-unsafe-call
+        "typescript/no-unsafe-call": "off",
+        // 안전하지 않은 반환 허용
+        // https://typescript-eslint.io/rules/no-unsafe-return
+        "typescript/no-unsafe-return": "off",
+        // 안전하지 않은 인수 허용
+        // https://typescript-eslint.io/rules/no-unsafe-argument
+        "typescript/no-unsafe-argument": "off",
+        // any 타입 사용 허용
+        // https://typescript-eslint.io/rules/no-explicit-any
+        "typescript/no-explicit-any": "off",
+        // @ts-ignore 등 주석 사용 허용
+        // https://typescript-eslint.io/rules/ban-ts-comment
+        "typescript/ban-ts-comment": "off",
+        /*
+         * TypeScript 오류 방지 규칙 (엄격함)
+         * 명확한 오류를 방지하는 엄격한 규칙들
+         */
+        // new 키워드 오용 금지
+        // https://typescript-eslint.io/rules/no-misused-new
+        "typescript/no-misused-new": "error",
+        // namespace 사용 지양
+        // https://typescript-eslint.io/rules/no-namespace
+        "typescript/no-namespace": "warn",
+        // !와 ?? 동시 사용 금지
+        // https://typescript-eslint.io/rules/no-non-null-asserted-nullish-coalescing
+        "typescript/no-non-null-asserted-nullish-coalescing": "error",
+        // !와 ?. 동시 사용 금지
+        // https://typescript-eslint.io/rules/no-non-null-asserted-optional-chain
+        "typescript/no-non-null-asserted-optional-chain": "error",
+        // ! 연산자 사용 허용
+        // https://typescript-eslint.io/rules/no-non-null-assertion
+        "typescript/no-non-null-assertion": "off",
+        // require() 사용 지양
+        // https://typescript-eslint.io/rules/no-require-imports
+        "typescript/no-require-imports": "warn",
+        // this 별칭 사용 지양
+        // https://typescript-eslint.io/rules/no-this-alias
+        "typescript/no-this-alias": "warn",
+        // 불필요한 타입 제약 지양
+        // https://typescript-eslint.io/rules/no-unnecessary-type-constraint
+        "typescript/no-unnecessary-type-constraint": "warn",
+        // 안전하지 않은 선언 병합 금지
+        // https://typescript-eslint.io/rules/no-unsafe-declaration-merging
+        "typescript/no-unsafe-declaration-merging": "error",
+        // 안전하지 않은 함수 타입 금지
+        // https://typescript-eslint.io/rules/no-unsafe-function-type
+        "typescript/no-unsafe-function-type": "error",
+        // 사용되지 않는 표현식 지양
+        // https://typescript-eslint.io/rules/no-unused-expressions
+        "typescript/no-unused-expressions": "warn",
+        // 사용되지 않는 변수 허용
+        // https://typescript-eslint.io/rules/no-unused-vars
+        "typescript/no-unused-vars": [
+            "error",
+            {
+                "args": "none",
+                "argsIgnorePattern": "^_",
+                "varsIgnorePattern": "^_",
+                "ignoreRestSiblings": true
+            }
+        ],
+        // 불필요한 생성자 지양
+        // https://typescript-eslint.io/rules/no-useless-constructor
+        "typescript/no-useless-constructor": "warn",
+        // 래퍼 객체 타입 금지
+        // https://typescript-eslint.io/rules/no-wrapper-object-types
+        "typescript/no-wrapper-object-types": "error",
+        /*
+         * TypeScript 스타일 권장사항
+         * TypeScript 스타일 가이드라인
+         */
+        // as const 사용 권장
+        // https://typescript-eslint.io/rules/prefer-as-const
+        "typescript/prefer-as-const": "warn",
+        // for-of 루프 사용 강제 안함
+        // https://typescript-eslint.io/rules/prefer-for-of
+        "typescript/prefer-for-of": "off",
+        // 함수 타입 사용 강제 안함
+        // https://typescript-eslint.io/rules/prefer-function-type
+        "typescript/prefer-function-type": "off",
+        // 리터럴 enum 멤버 강제 안함
+        // https://typescript-eslint.io/rules/prefer-literal-enum-member
+        "typescript/prefer-literal-enum-member": "off",
+        // namespace 키워드 강제 안함
+        // https://typescript-eslint.io/rules/prefer-namespace-keyword
+        "typescript/prefer-namespace-keyword": "off",
+        // /// 참조 지시문 금지
+        // https://typescript-eslint.io/rules/triple-slash-reference
+        "typescript/triple-slash-reference": "error",
+        /*
+         * TypeScript 일관성 규칙
+         * 코드 일관성 유지를 위한 규칙들
+         */
+        // 제네릭 생성자 일관성
+        // https://typescript-eslint.io/rules/consistent-generic-constructors
+        "typescript/consistent-generic-constructors": "warn",
+        // 인덱스 객체 스타일 일관성
+        // https://typescript-eslint.io/rules/consistent-indexed-object-style
+        "typescript/consistent-indexed-object-style": "warn",
+        // 타입 어설션 일관성
+        // https://typescript-eslint.io/rules/consistent-type-assertions
+        "typescript/consistent-type-assertions": "warn",
+        // 타입 정의 일관성 (interface vs type)
+        // https://typescript-eslint.io/rules/consistent-type-definitions
+        "typescript/consistent-type-definitions": "warn",
+        /*
+         * TypeScript 코드 품질 규칙
+         * 코드 품질 향상을 위한 규칙들
+         */
+        // Array 생성자 사용 금지
+        // https://typescript-eslint.io/rules/no-array-constructor
+        "typescript/no-array-constructor": "error",
+        // 혼란스러운 non-null assertion 지양
+        // https://typescript-eslint.io/rules/no-confusing-non-null-assertion
+        "typescript/no-confusing-non-null-assertion": "warn",
+        // 중복 enum 값 금지
+        // https://typescript-eslint.io/rules/no-duplicate-enum-values
+        "typescript/no-duplicate-enum-values": "error",
+        // 동적 delete 사용 지양
+        // https://typescript-eslint.io/rules/no-dynamic-delete
+        "typescript/no-dynamic-delete": "warn",
+        // 빈 함수 지양
+        // https://typescript-eslint.io/rules/no-empty-function
+        "typescript/no-empty-function": "warn",
+        // 빈 객체 타입 지양
+        // https://typescript-eslint.io/rules/no-empty-object-type
+        "typescript/no-empty-object-type": "warn",
+        // 불필요한 non-null assertion 금지
+        // https://typescript-eslint.io/rules/no-extra-non-null-assertion
+        "typescript/no-extra-non-null-assertion": "error",
+        // 불필요한 클래스 허용
+        // https://typescript-eslint.io/rules/no-extraneous-class
+        "typescript/no-extraneous-class": "off",
+        // 추론 가능한 타입 명시 지양
+        // https://typescript-eslint.io/rules/no-inferrable-types
+        "typescript/no-inferrable-types": "warn",
+        /*
+         * TypeScript 구조 및 순서 규칙
+         * 코드 구조와 순서 관련 규칙들
+         */
+        // 오버로드 시그니처 인접 배치 강제
+        // https://typescript-eslint.io/rules/adjacent-overload-signatures
+        "typescript/adjacent-overload-signatures": "error",
+        // 배열 타입 일관성 (T[] vs Array<T>)
+        // https://typescript-eslint.io/rules/array-type
+        "typescript/array-type": "warn",
+        // TSLint 주석 사용 지양
+        // https://typescript-eslint.io/rules/ban-tslint-comment
+        "typescript/ban-tslint-comment": "warn",
+        /*
+         * 기본 JavaScript/TypeScript 규칙
+         */
+        // console 사용 금지
+        // https://eslint.org/docs/rules/no-console
+        "no-console": "error",
+        /*
+         * Import 관련 규칙
+         */
+        // import 순서 정렬
+        // https://github.com/import-js/eslint-plugin-import/blob/main/docs/rules/order.md
+        "import/order": [
+            "warn",
+            {
+                "groups": [
+                    "builtin",
+                    "external",
+                    "internal",
+                    "parent",
+                    "sibling",
+                    "index"
+                ]
+            }
+        ],
+        /*
+         * 스타일 관련 규칙
+         */
+        // 최대 줄 길이 제한
+        // https://eslint.style/rules/default/max-len
+        "style/max-len": [
+            "error",
+            {
+                "code": 120,
+                "tabWidth": 4,
+                "ignoreComments": true,
+                "ignoreStrings": true,
+                "ignoreUrls": true
+            }
+        ]
+    }
+}
